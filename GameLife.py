@@ -1,7 +1,8 @@
-from collections import namedtuple
-import matplotlib
-import pylab
+import collections
+import matplotlib.pyplot
 import time
+
+namedtuple = collections.namedtuple
 
 class Game:
 
@@ -37,30 +38,18 @@ class Game:
                         else:
                             self.relevantDeadCells[Game.Point(i,j)] = Game.defaultDeadCell
 
-    def printGame(self):
-        print "Current Living Cells"
-        print self.currentLivingCells
-        print len(self.currentLivingCells)
-        print "Relevant Dead Cells"
-        print self.relevantDeadCells
-        print len(self.relevantDeadCells)
-        print "Future Living Cells"
-        print self.futureLivingCells
-        print len(self.futureLivingCells)
-        print
 
     def printBoard(self):
         
         f = matplotlib.pyplot.figure()
-        ax = f.add_subplot()
+        # ax = f.add_subplot()
 
         for k in self.currentLivingCells.keys():
             matplotlib.pyplot.scatter(k.x, k.y)
 
         f.show()
-        
         time.sleep(0.5)
-        f.clear()
+        # f.clear()
 
     def playGame(self):
         
@@ -86,11 +75,10 @@ class Game:
 
 def main():
 
-    # gameOfLife = Game([(1,1),(2,1),(2,2),(3,1),(3,2),(1,2),(4,1),(4,3)], 30)
-
-    gameOfLife = Game([(1,1),(2,1),(3,1),(4,1),(5,1),(2,2),(3,2),(4,2),(3,3)], 15)
-   
+    # gameOfLife = Game([(1,1),(2,1),(2,2),(3,1),(3,2),(1,2),(4,1),(4,3)], 30)   
     # gameOfLife = Game([(1,0),(2,0),(3,0),(4,0),(2,1),(3,1)], 30)
+
+    gameOfLife = Game([(1,1),(2,1),(3,1),(4,1),(5,1),(2,2),(3,2),(4,2),(3,3)], 13)
     gameOfLife.playGame()
 
 main()
